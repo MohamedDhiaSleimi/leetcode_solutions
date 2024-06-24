@@ -6,9 +6,9 @@ for test in test_cases:
     res: bool = a.<methode-name>(test[0])
     print(
         test,
-        "got",
+        "got \"",
         res,
-        "=>",
+        "\" =>",
         res == test[-1],
     )
     if not (res == test[-1]):
