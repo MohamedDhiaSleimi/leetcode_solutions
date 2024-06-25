@@ -7,7 +7,7 @@ class TreeNode:
 
 class Solution:
     def bstToGst(self, root: TreeNode) -> TreeNode:
-        def reverse_in_order_traversal(node, acc_sum):
+        def reverse_in_order_traversal(node: TreeNode, acc_sum: int) -> int:
             if not node:
                 return acc_sum
             acc_sum: int = reverse_in_order_traversal(node.right, acc_sum)
