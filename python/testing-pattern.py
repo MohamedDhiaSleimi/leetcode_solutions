@@ -1,6 +1,6 @@
 a: Solution = Solution()
 test_cases: list[list] = []
-warn_list: list[str] = ["errors:"]
+warn_list: list[str] = []
 
 def testing(res,test) ->bool:
     if isinstance(test, (tuple, list, dict, str, int, float)):
@@ -20,7 +20,8 @@ for test in test_cases:
         )
 
 print("=================================\n")
-if len(warn_list) > 1:
+if warn_list:
+    print("errors!!")
     for warn in warn_list:
         print(warn)
     print("_________________________________\n")
