@@ -1,21 +1,26 @@
 a: Solution = Solution()
 test_cases: list[list] = []
-warn_list: list[str] = []
-print("_________________________________\n")
+warn_list: list[str] = ["errors:"]
+
+def testing(res,test) ->bool:
+    if isinstance(test, (tuple, list, dict, str, int, float)):
+        return res == test
+    else:
+        raise Exception("did not implement testing function for this class")
+
 for test in test_cases:
     res: bool = a.<methode-name>(test[0])
-    print(
-        test,
-        "got \"",
-        res,
-        "\" =>",
-        res == test[-1],
-    )
-    if not (res == test[-1]):
-        warn_list.append(f"there is an error in {test}")
+    if not testing(res,test[-1]):
+        warn_list.append(f"{test},{res}")
+    else:
+        print("_________________________________\n")
+        print(
+            test[:-1],
+            res,
+        )
 
-print("_________________________________\n")
-if len(warn_list) > 0:
+print("=================================\n")
+if len(warn_list) > 1:
     for warn in warn_list:
         print(warn)
     print("_________________________________\n")
