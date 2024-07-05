@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -5,33 +8,35 @@ class ListNode:
         self.next = next
 
 
-from typing import *
-
-
 class Solution:
     def nodesBetweenCriticalPoints(self, head: Optional[ListNode]) -> list[int]:
-        cPI: list[int] = []  # criticalPointIndex
-        cache: list[int] = []
-        i: int = -2
-        while head != None:
-            i += 1
-            cache.append(head.val)
-            if len(cache) > 3:
-                cache.pop(0)
-            if len(cache) == 3:
-                if (cache[1] > cache[0] and cache[1] > cache[2]) or (
-                    cache[1] < cache[0] and cache[1] < cache[2]
-                ):
-                    cPI.append(i)
-            head = head.next
-        if len(cPI) < 2:
+        if not head or not head.next or not head.next.next:
             return [-1, -1]
-        maxDistance: int = cPI[-1] - cPI[0]
-        minDistance: int = maxDistance
-        for i in range(1, len(cPI)):
-            if cPI[i] - cPI[i - 1] < minDistance:
-                minDistance = cPI[i] - cPI[i - 1]
-        return [minDistance, maxDistance]
+
+        prev: ListNode = head
+        curr: ListNode = head.next
+        next: ListNode = head.next.next
+        index: int = 1
+        first: int | None = None
+        last: int | None = None
+        minDistance: int | None = 99999999
+        number: int = 0
+        while next:
+            if (curr.val > next.val and curr.val > prev.val) or (
+                curr.val < next.val and curr.val < prev.val
+            ):
+                number += 1
+                if first is None:
+                    first = index
+                else:
+                    minDistance = min(minDistance, index - last)
+                last = index
+            index += 1
+            prev, curr, next = curr, next, next.next
+        if number < 2:
+            return [-1, -1]
+        else:
+            return [minDistance, last - first]
 
 
 def linked_list_to_list(head: ListNode) -> list:
@@ -60,6 +65,10 @@ test_cases: list[list] = [
         [5, 3, 1, 2, 5, 1, 2],
         [1, 3],
     ],
+    [
+        [4, 2, 4, 1],
+        [1, 1],
+    ],
 ]
 warn_list: list[str] = []
 
@@ -72,7 +81,7 @@ def testing(res, test) -> bool:
 
 
 for test in test_cases:
-    res: bool = a.nodesBetweenCriticalPoints(list_to_linked_list(test[0]))
+    res: list[int] = a.nodesBetweenCriticalPoints(list_to_linked_list(test[0]))
     if not testing(res, test[-1]):
         warn_list.append(f"{test},{res}")
     else:
