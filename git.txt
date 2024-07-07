@@ -1,0 +1,35 @@
+commit 031cd1e9627a1550f01a396aebfa12d829644451
+Author: Mohamed Dhia Sleimi <sleimi.mohameddhia@gmail.com>
+Date:   Sun Jul 7 16:15:52 2024 +0100
+
+    solved problem N°0066 in go
+
+commit 014a5daf76b339c9bd28755472a0cef76ca437ef
+Author: Mohamed Dhia Sleimi <sleimi.mohameddhia@gmail.com>
+Date:   Sun Jul 7 15:45:43 2024 +0100
+
+    solved problem N°0058 in go
+
+commit 7de050c616eb2a0e4044dc870ac87710a886560a
+Author: Mohamed Dhia Sleimi <sleimi.mohameddhia@gmail.com>
+Date:   Sun Jul 7 04:58:54 2024 +0100
+
+    solved problem N°2582 in python
+
+commit 5966bc3d832b6bf07ad261755f677fd7ce4cb82b
+Author: Mohamed Dhia Sleimi <sleimi.mohameddhia@gmail.com>
+Date:   Sun Jul 7 04:10:35 2024 +0100
+
+    solved problem N°2181 in python
+
+commit c74cb514479b35e7ae6a4b0eadf19c4e926dae94
+Author: Mohamed Dhia Sleimi <sleimi.mohameddhia@gmail.com>
+Date:   Sun Jul 7 03:27:08 2024 +0100
+
+    solved problem N°1518 in python
+
+commit a46774a96e4504d116b151b2538868dc29c37d09
+Author: Mohamed Dhia Sleimi <sleimi.mohameddhia@gmail.com>
+Date:   Fri Jul 5 17:36:00 2024 +0100
+
+    optimized problem N°2058 replaced list with nodes and removed the second for loop
