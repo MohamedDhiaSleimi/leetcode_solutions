@@ -1,16 +1,26 @@
-a: Solution = Solution()
-test_cases: list[list] = []
-warn_list: list[str] = []
+a = Solution()
+test_cases = []
+warn_list = []
 
-def testing(res,test) ->bool:
-    if isinstance(test, (tuple, list, dict, str, int, float)):
-        return res == test
+
+def testing(res, expected) -> bool:
+    if isinstance(expected, (tuple, list, dict, str, int, float)):
+        return res == expected
     else:
         raise Exception("did not implement testing function for this class")
 
+
 for test in test_cases:
-    res: bool = a.<methode-name>(test[0])
-    if not testing(res,test[-1]):
+    input_value = test[0]
+    expected_result = test[-1]
+
+    try:
+        res = a.sample_method(input_value)
+    except Exception as e:
+        warn_list.append(f"{test},{str(e)}")
+        continue
+
+    if not testing(res, expected_result):
         warn_list.append(f"{test},{res}")
     else:
         print("_________________________________\n")
@@ -25,3 +35,5 @@ if warn_list:
     for warn in warn_list:
         print(warn)
     print("_________________________________\n")
+else:
+    print("All tests passed!")
