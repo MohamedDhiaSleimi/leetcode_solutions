@@ -36,9 +36,9 @@ func reverseParentheses(s string) string {
 	stack := []string{}
 	for _, char := range s {
 		if char == ')' {
-			temp := ""
+			temp := []string{}
 			for stack[len(stack)-1] != "(" {
-				temp += stack[len(stack)-1]
+				temp = append(temp, stack[len(stack)-1])
 				stack = stack[:len(stack)-1]
 			}
 			stack = stack[:len(stack)-1] // pop '('
